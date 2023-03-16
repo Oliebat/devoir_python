@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>System Info</title>
+</head>
+<body>
+    <div class="blog_post">
+        <div class="img_pod">
+            <!-- If the operating system is Windows, display the Windows logo. -->
+            {% if info.os == "Windows" %}
+            <img src="../static/img/logo-win.png" alt="Windows image">
+            <!-- If the operating system is Linux, display the Linux logo. -->
+            {% elif info.os == "Linux" %}
+            <img src="../static/img/logo-linux.png" alt="Linux image">
+            <!-- If the operating system is macOS, display the macOS logo. -->
+            {% elif info.os == "Darwin" %}
+            <img src="../static/img/logo-apple.png" alt="macOS image">
+            <!-- If the operating system is not Windows, Linux, or macOS, display the default logo. -->
+            {% else %}
+            <img src="../static/img/pc-logo.png" alt="Default image">
+            {% endif %}
+        </div>
+        <div class="container_copy">
+            <h1>System Info</h1>
+                <h3>Plateforme</h3>
+                    <p>{{ info.os }}</p>
+                <h3>Hostname</h3>
+                    <p>{{ info.hostname }}</p>
+                <h3>IP Address</h3>
+                    <p>{{ info.ip_address }}</p>
+                <h3>CPU Info</h3>
+                    <p>{{ info.cpu_info.brand_raw }}</p>
+                <h3>OS Version</h3>
+                    <p>{{ info.os_version }}</p>
+                <h3>Python Version</h3>
+                    <p>{{ info.python_version }}</p>
+                <h3>Username Windows</h3>
+                    <p>{{ info.username }}</p>
+                <h3>Ram</h3>
+                    <p>{{ (info.total_ram / (1024 * 1024 * 1024))|round(2) }} GB</p>
+                <h3>Ip Adress</h3>
+                    <p>{{ info.ip_address }}</p>
+        </div>
+        
+      </div>
+</body>
+</html>

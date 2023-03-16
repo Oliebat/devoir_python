@@ -19,7 +19,6 @@ class SystemInfo:
         self.python_version = platform.python_version()
         self.username = os.getlogin()
         self.total_ram = psutil.virtual_memory().total
-        self.ip = socket.gethostbyname(socket.gethostname())
 
 # Function to get the system information
     def get_info(self):
@@ -32,7 +31,6 @@ class SystemInfo:
             "python_version": self.python_version,
             "username": self.username,
             "total_ram": self.total_ram,
-            "ip": self.ip
         }
 # Route to the index page
 @app.route("/")
